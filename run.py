@@ -37,7 +37,10 @@ def main():
 
     try:
         r = requests.request('POST', CALLBACK_URL, headers=headers, data=payload)
-        print(f'Requisição enviada com sucesso: {r}')
+        if r.status_code == 200:
+            print(f'Requisição enviada com sucesso: {r}')
+        else:
+            print(f'Falha na requisição. Status code: {r.status_code}, Resposta: {r.text}')
     except requests.exceptions.RequestException as e:
         print(f'Erro na requisição: {e}')
 
