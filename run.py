@@ -36,8 +36,8 @@ def main():
     print(payload)
 
     try:
-        requests.request('POST', CALLBACK_URL, headers=headers, data=payload)
-        print('Requisição enviada com sucesso')
+        r = requests.request('POST', CALLBACK_URL, headers=headers, data=payload)
+        print(f'Requisição enviada com sucesso: {r}')
     except requests.exceptions.RequestException as e:
         print(f'Erro na requisição: {e}')
 
